@@ -23,6 +23,10 @@ for (let i = 0; i < alphabet.length; i++) {
 }
 var mycar = { make: 'BMW', model: '325i', year: 2007 };
 // Above is just data to use
+
+function compound(cumulativeValue, currentValue) {
+  return cumulativeValue**currentValue;
+}
 // Below is use, functions and feedback
 
 // objs1.forEach((val, index) => d(`${val.single} ${val.double} ${val.triple} ${val.unit} ${val.ten} ${val.hundred}`));
