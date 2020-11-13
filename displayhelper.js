@@ -1,5 +1,8 @@
 if (!l) {
-    var l = console.log;
+    var l = function(x) {
+        console.log(x);
+        return x;
+    }
 }  
 
 var arrD = [];
