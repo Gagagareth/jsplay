@@ -25,45 +25,40 @@ var mycar = { make: 'BMW', model: '325i', year: 2007, colour: 'silver' };
 
 // Above is just data to use Below is use, functions and feedback
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const https = require('https')
-const url = "https://jsonmock.hackerrank.com/api/movies";
-https.get(url, res => {
-    let data = '';
-    res.on('data', chunk => {
-        data += chunk;
-    });
-    res.on('end', () => {
-        data = JSON.parse(data);
-        console.log(data);
-    })
-}).on('error', err => {
-    console.log(err.message);
-})
 
-// JavaScript
-async function getIPAddress() {
-    const url = 'https://httpbin.org/ip';
-    const response = await fetch(url);
-    const json = await response.json();
-    const data = json.origin;
-    return data;
-}
-
-async function main() {
-    try {
-        const ip = await getIPAddress();
-        console.log(ip);
-    } catch (error) {
-        console.error(error);
+class Foo {
+    *[Symbol.iterator]() {
+        yield 1;
+        yield 2;
     }
 }
 
-//main(); 
-
-if ('LlI' !== true) {
-    console.log('whoa!');
+const SomeObj = {
+    *[Symbol.iterator]() {
+        yield 'a';
+        yield 'b';
+    }
 }
-// Consolas, 'Courier New', monospace
-// Fira Code
 
+console.log(Array.from(new Foo)); // [ 1, 2 ]
+console.log(Array.from(SomeObj)); // [ 'a', 'b' ]
 
+function* counter(value) {
+    let step;
+
+    while (true) {
+        step = yield ++value;
+
+        if (step) {
+            value += step;
+        }
+    }
+}
+
+const generatorFunc = counter(0);
+console.log(generatorFunc.next().value);   // 1
+console.log(generatorFunc.next().value);   // 2
+console.log(generatorFunc.next().value);   // 3
+console.log(generatorFunc.next(10).value); // 14
+console.log(generatorFunc.next().value);   // 15
+console.log(generatorFunc.next(10).value); // 26

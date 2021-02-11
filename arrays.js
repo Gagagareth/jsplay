@@ -2,7 +2,7 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 const chars1 = [], chars2 = [], chars3 = [];
 const nums1 = [], nums2 = [];
 let nums3 = [], nums4 = [], nums5 = [];
-let objs1 = [];
+let arrObjs = [];
 
 for (let i = 0; i < alphabet.length; i++) {
   const a = alphabet[i];
@@ -12,7 +12,7 @@ for (let i = 0; i < alphabet.length; i++) {
   nums1.push(i);
   nums2.push(i * 10);
   nums3.push(i * 100);
-  objs1.push({
+  arrObjs.push({
     single: a,
     double: a + a,
     triple: a + a + a,
@@ -24,7 +24,8 @@ for (let i = 0; i < alphabet.length; i++) {
 // Above is just data to use
 // Below is use, functions and feedback
 
-// objs1.forEach((val, index) => _d(`${val.single} ${val.double} ${val.triple} ${val.unit} ${val.ten} ${val.hundred}`));
+arrObjs.forEach((val, index, arrObjs) => _d(`${val.single} ${val.double} ${val.triple} ${val.unit} ${val.ten} ${val.hundred}`));
+
 const reducerFunction = (cur, val) => cur + val;
 const initialValue = 0;
 const aggregate3 = nums3.reduce(reducerFunction, initialValue);
